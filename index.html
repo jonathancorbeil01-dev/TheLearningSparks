@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Learning Sparks — Ressources éducatives numériques</title>
+<meta name="description" content="Ressources éducatives numériques. Améliorer l'apprentissage avec des outils ludiques et pédagogiques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1B2A4A;
+    --navy-light: #243560;
+    --gold: #F7C948;
+    --gold-dark: #D4A017;
+    --gold-light: #FDF3C8;
+    --white: #FFFFFF;
+    --off-white: #F8F7F2;
+    --text: #1a1a2e;
+    --text-muted: #6b7280;
+    --border: rgba(0,0,0,0.1);
+  }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 40px; background: var(--navy);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo img { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--gold); }
+  .nav-logo-text { color: #fff; font-size: 14px; font-weight: 600; line-height: 1.2; }
+  .nav-logo-sub { color: var(--gold); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 22px; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.7); text-decoration: none; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-right { display: flex; align-items: center; gap: 10px; }
+  .lang-toggle { display: flex; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; overflow: hidden; }
+  .lang-btn { padding: 5px 11px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.5); font-family: inherit; }
+  .lang-btn.active { background: var(--gold); color: var(--navy); }
+  .etsy-btn { font-size: 12px; font-weight: 600; color: var(--navy); background: var(--gold); border: none; border-radius: 6px; padding: 8px 16px; cursor: pointer; font-family: inherit; text-decoration: none; }
+
+  /* HERO */
+  .hero { background: var(--navy); padding: 72px 40px 80px; display: flex; align-items: center; gap: 60px; }
+  .hero-text { flex: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(247,201,72,0.4); border-radius: 20px; padding: 5px 16px; margin-bottom: 22px; font-size: 13px; color: var(--gold); }
+  .hero h1 { font-size: 38px; font-weight: 600; line-height: 1.2; color: #fff; margin-bottom: 18px; }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 460px; margin-bottom: 30px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-gold { padding: 12px 24px; background: var(--gold); color: var(--navy); border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; }
+  .btn-outline { padding: 12px 24px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; font-size: 14px; cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; }
+  .hero-logo { flex-shrink: 0; }
+  .hero-logo img { width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--gold); display: block; }
+
+  /* STATS BAR */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--gold); }
+  .stat { padding: 22px 32px; text-align: center; border-right: 1px solid rgba(27,42,74,0.15); }
+  .stat:last-child { border-right: none; }
+  .stat-icon { font-size: 22px; margin-bottom: 4px; }
+  .stat-label { font-size: 12px; color: rgba(27,42,74,0.75); font-weight: 500; }
+
+  /* SECTIONS */
+  .section { padding: 60px 40px; }
+  .section-alt { padding: 60px 40px; background: var(--off-white); }
+  .section-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--navy); background: var(--gold-light); border: 1px solid rgba(212,160,23,0.35); border-radius: 20px; padding: 3px 14px; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .section h2 { font-size: 26px; font-weight: 600; margin-bottom: 10px; }
+  .section-sub { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+
+  /* TOPICS */
+  .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 12px; }
+  .topic-card { border: 1px solid var(--border); border-radius: 12px; background: #fff; padding: 22px 16px; text-align: center; transition: border-color 0.15s; }
+  .topic-card:hover { border-color: var(--gold-dark); }
+  .topic-icon { font-size: 30px; margin-bottom: 10px; }
+  .topic-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .topic-desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ABOUT */
+  .about-inner { display: flex; gap: 48px; align-items: center; flex-wrap: wrap; }
+  .about-badge { flex-shrink: 0; }
+  .about-badge img { width: 180px; height: 180px; border-radius: 50%; border: 3px solid var(--gold); display: block; }
+  .about-text p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 14px; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .pill { font-size: 11px; padding: 5px 14px; border-radius: 20px; background: var(--gold-light); color: var(--navy); border: 1px solid rgba(212,160,23,0.3); font-weight: 500; }
+
+  /* FEED */
+  .feed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+  .feed-cell { aspect-ratio: 1; border-radius: 12px; background: var(--off-white); border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; position: relative; overflow: hidden; }
+  .feed-cell:hover .feed-overlay { opacity: 1; }
+  .feed-overlay { position: absolute; inset: 0; background: rgba(27,42,74,0.88); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.18s; }
+  .feed-overlay span { color: var(--gold); font-size: 13px; font-weight: 600; }
+  .feed-emoji { font-size: 32px; }
+  .feed-lbl { font-size: 12px; color: var(--text-muted); }
+  .feed-footer { text-align: center; margin-top: 28px; }
+
+  /* CTA BANNER */
+  .cta-banner { margin: 0 40px 60px; border-radius: 16px; background: var(--navy); padding: 44px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cta-banner h3 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .cta-banner p { font-size: 14px; color: rgba(255,255,255,0.65); }
+
+  /* FOOTER */
+  footer { background: var(--navy); padding: 28px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--gold); }
+  .footer-logo-name { color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 500; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 12px; color: rgba(255,255,255,0.45); text-decoration: none; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
+  .social-links { display: flex; gap: 10px; }
+  .social-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; color: rgba(255,255,255,0.6); font-size: 16px; text-decoration: none; }
+  .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 48px 20px; flex-direction: column-reverse; gap: 32px; }
+    .hero h1 { font-size: 28px; }
+    .hero-logo img { width: 140px; height: 140px; }
+    .section, .section-alt { padding: 44px 20px; }
+    .cta-banner { margin: 0 20px 44px; padding: 32px 24px; }
+    footer { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <img src="logo.png" alt="Learning Sparks Logo">
+    <div>
+      <div class="nav-logo-text">Learning Sparks</div>
+      <div class="nav-logo-sub">— Educational —</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#topics" class="t" data-fr="Ressources" data-en="Resources">Ressources</a>
+    <a href="#about" class="t" data-fr="À propos" data-en="About">À propos</a>
+    <a href="#instagram" class="t" data-fr="Instagram" data-en="Instagram">Instagram</a>
+    <a href="#contact" class="t" data-fr="Contact" data-en="Contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="https://www.etsy.com/ca-fr/shop/LearningSparks" target="_blank" class="etsy-btn t" data-fr="Boutique Etsy" data-en="Etsy Shop">Boutique Etsy</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">✨ <span class="t" data-fr="Ressources éducatives numériques" data-en="Digital educational resources">Ressources éducatives numériques</span></div>
+    <h1 class="t" data-fr="Améliorez l'apprentissage avec des outils <em>ludiques</em> et <em>pédagogiques</em>" data-en="Boost learning with <em>fun</em> and <em>educational</em> tools">Améliorez l'apprentissage avec des outils <em>ludiques</em> et <em>pédagogiques</em></h1>
+    <p class="t" data-fr="Des ressources numériques pensées pour rendre chaque moment d'apprentissage plus engageant, pour les enfants comme pour les enseignants." data-en="Digital resources designed to make every learning moment more engaging, for children and educators alike.">Des ressources numériques pensées pour rendre chaque moment d'apprentissage plus engageant, pour les enfants comme pour les enseignants.</p>
+    <div class="hero-btns">
+      <a href="#topics" class="btn-gold t" data-fr="Explorer les ressources" data-en="Explore resources">Explorer les ressources →</a>
+      <a href="https://www.instagram.com/thelearningsparks/" target="_blank" class="btn-outline t" data-fr="Nous suivre sur Instagram" data-en="Follow us on Instagram">Nous suivre sur Instagram</a>
+    </div>
+  </div>
+  <div class="hero-logo">
+    <img src="logo.png" alt="Learning Sparks">
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-icon">✨</div><div class="stat-label t" data-fr="Ressources numériques" data-en="Digital resources">Ressources numériques</div></div>
+  <div class="stat"><div class="stat-icon">📖</div><div class="stat-label t" data-fr="Outils pédagogiques" data-en="Educational tools">Outils pédagogiques</div></div>
+  <div class="stat"><div class="stat-icon">🌟</div><div class="stat-label t" data-fr="Apprentissage ludique" data-en="Playful learning">Apprentissage ludique</div></div>
+</div>
+
+<section class="section" id="topics">
+  <div class="section-tag t" data-fr="Ce qu'on propose" data-en="What we offer">Ce qu'on propose</div>
+  <h2 class="t" data-fr="Des ressources qui éveillent la curiosité" data-en="Resources that spark curiosity">Des ressources qui éveillent la curiosité</h2>
+  <p class="section-sub t" data-fr="De la lecture aux sciences — des contenus qui transforment l'apprentissage en aventure." data-en="From reading to science — content that turns learning into an adventure.">De la lecture aux sciences — des contenus qui transforment l'apprentissage en aventure.</p>
+  <div class="topics-grid">
+    <div class="topic-card"><div class="topic-icon">🔬</div><div class="topic-name t" data-fr="Sciences" data-en="Science">Sciences</div><div class="topic-desc t" data-fr="Expériences faciles" data-en="Easy experiments">Expériences faciles</div></div>
+    <div class="topic-card"><div class="topic-icon">📚</div><div class="topic-name t" data-fr="Lecture" data-en="Reading">Lecture</div><div class="topic-desc t" data-fr="Livres et compréhension" data-en="Books & comprehension">Livres et compréhension</div></div>
+    <div class="topic-card"><div class="topic-icon">🎨</div><div class="topic-name t" data-fr="Créativité" data-en="Creativity">Créativité</div><div class="topic-desc t" data-fr="Art et expression" data-en="Art & expression">Art et expression</div></div>
+    <div class="topic-card"><div class="topic-icon">🧮</div><div class="topic-name t" data-fr="Mathématiques" data-en="Mathematics">Mathématiques</div><div class="topic-desc t" data-fr="Aimer les chiffres" data-en="Love numbers">Aimer les chiffres</div></div>
+    <div class="topic-card"><div class="topic-icon">🌍</div><div class="topic-name t" data-fr="Géographie" data-en="Geography">Géographie</div><div class="topic-desc t" data-fr="Explorer le monde" data-en="Explore the world">Explorer le monde</div></div>
+    <div class="topic-card"><div class="topic-icon">💡</div><div class="topic-name t" data-fr="État d'esprit" data-en="Mindset">État d'esprit</div><div class="topic-desc t" data-fr="Confiance et croissance" data-en="Confidence & growth">Confiance et croissance</div></div>
+  </div>
+</section>
+
+<section class="section-alt" id="about">
+  <div class="section">
+    <div class="section-tag t" data-fr="À propos" data-en="About us">À propos</div>
+    <div class="about-inner">
+      <div class="about-badge"><img src="logo.png" alt="Learning Sparks"></div>
+      <div class="about-text">
+        <h2 class="t" data-fr="Chaque enfant est un apprenant naturel" data-en="Every child is a natural learner">Chaque enfant est un apprenant naturel</h2><br>
+        <p class="t" data-fr="Learning Sparks est né de la passion de rendre l'éducation plus joyeuse et accessible. Nous partageons des activités, idées et ressources numériques conçues pour allumer la curiosité naturelle des enfants." data-en="Learning Sparks was born from a passion for making education more joyful and accessible. We share activities, ideas, and digital resources designed to ignite children's natural curiosity.">Learning Sparks est né de la passion de rendre l'éducation plus joyeuse et accessible. Nous partageons des activités, idées et ressources numériques conçues pour allumer la curiosité naturelle des enfants.</p>
+        <p class="t" data-fr="Que vous soyez parent, enseignant ou simplement curieux — il y a une étincelle ici pour vous." data-en="Whether you're a parent, teacher, or simply curious — there's a spark here for you.">Que vous soyez parent, enseignant ou simplement curieux — il y a une étincelle ici pour vous.</p>
+        <div class="pills">
+          <span class="pill t" data-fr="Petite enfance" data-en="Early childhood">Petite enfance</span>
+          <span class="pill t" data-fr="Ressources parents" data-en="Parent resources">Ressources parents</span>
+          <span class="pill t" data-fr="Outils enseignants" data-en="Educator tools">Outils enseignants</span>
+          <span class="pill t" data-fr="Boutique Etsy" data-en="Etsy Shop">Boutique Etsy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="instagram">
+  <div class="section-tag">Instagram</div>
+  <h2 class="t" data-fr="Derniers posts @thelearningsparks" data-en="Latest from @thelearningsparks">Derniers posts @thelearningsparks</h2>
+  <p class="section-sub t" data-fr="Suivez-nous pour des idées quotidiennes d'activités et de ressources pédagogiques." data-en="Follow us for daily activity ideas and educational resources.">Suivez-nous pour des idées quotidiennes d'activités et de ressources pédagogiques.</p>
+  <div class="feed-grid">
+    <div class="feed-cell"><div class="feed-emoji">🔬</div><div class="feed-lbl t" data-fr="Sciences" data-en="Science">Sciences</div><div class="feed-overlay"><span class="t" data-fr="Voir le post" data-en="View post">Voir le post</span></div></div>
+    <div class="feed-cell"><div class="feed-emoji">📖</div><div class="feed-lbl t" data-fr="Lecture" data-en="Reading">Lecture</div><div class="feed-overlay"><span class="t" data-fr="Voir le post" data-en="View post">Voir le post</span></div></div>
+    <div class="feed-cell"><div class="feed-emoji">🎨</div><div class="feed-lbl t" data-fr="Créativité" data-en="Creativity">Créativité</div><div class="feed-overlay"><span class="t" data-fr="Voir le post" data-en="View post">Voir le post</span></div></div>
+    <div class="feed-cell"><div class="feed-emoji">🧠</div><div class="feed-lbl t" data-fr="Réflexion" data-en="Thinking">Réflexion</div><div class="feed-overlay"><span class="t" data-fr="Voir le post" data-en="View post">Voir le post</span></div></div>
+    <div class="feed-cell"><div class="feed-emoji">🌿</div><div class="feed-lbl t" data-fr="Nature" data-en="Nature">Nature</div><div class="feed-overlay"><span class="t" data-fr="Voir le post" data-en="View post">Voir le post</span></div></div>
+    <div class="feed-cell"><div class="feed-emoji">✏️</div><div class="feed-lbl t" data-fr="Écriture" data-en="Writing">Écriture</div><div class="feed-overlay"><span class="t" data-fr="Voir le post" data-en="View post">Voir le post</span></div></div>
+  </div>
+  <div class="feed-footer">
+    <a href="https://www.instagram.com/thelearningsparks/" target="_blank" class="btn-outline t" style="color:#1B2A4A; border-color:rgba(27,42,74,0.3);" data-fr="Voir tous les posts" data-en="See all posts">Voir tous les posts sur Instagram →</a>
+  </div>
+</section>
+
+<div class="cta-banner" id="contact">
+  <div>
+    <h3 class="t" data-fr="Ne ratez aucune étincelle ✨" data-en="Never miss a spark ✨">Ne ratez aucune étincelle ✨</h3>
+    <p class="t" data-fr="Recevez nos meilleures ressources éducatives directement dans votre boîte mail — gratuitement." data-en="Get our best educational resources delivered straight to your inbox — for free.">Recevez nos meilleures ressources éducatives directement dans votre boîte mail — gratuitement.</p>
+  </div>
+  <a href="https://www.instagram.com/thelearningsparks/" target="_blank" class="btn-gold t" data-fr="Rejoindre la communauté →" data-en="Join the community →">Rejoindre la communauté →</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="logo.png" alt="Logo">
+    <span class="footer-logo-name">Learning Sparks</span>
+  </div>
+  <div class="footer-links">
+    <a href="#" class="t" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
+    <a href="#contact" class="t" data-fr="Contact" data-en="Contact">Contact</a>
+    <a href="https://www.etsy.com/ca-fr/shop/LearningSparks" target="_blank" class="t" data-fr="Boutique" data-en="Shop">Boutique</a>
+  </div>
+  <div class="social-links">
+    <a href="https://www.instagram.com/thelearningsparks/" target="_blank" class="social-btn" title="Instagram">&#x2764;</a>
+    <a href="https://www.etsy.com/ca-fr/shop/LearningSparks" target="_blank" class="social-btn" title="Etsy">&#x1F6CD;</a>
+  </div>
+  <div class="footer-copy">© 2025 The Learning Sparks · thelearningsparks.com &amp; thelearningsparks.ca</div>
+</footer>
+
+<script>
+let lang = 'fr';
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === l.toUpperCase()));
+  document.querySelectorAll('.t[data-' + l + ']').forEach(el => {
+    const v = el.getAttribute('data-' + l);
+    if (el.tagName === 'H1' || v.includes('<em>')) el.innerHTML = v;
+    else el.textContent = v;
+  });
+}
+</script>
+</body>
+</html>
